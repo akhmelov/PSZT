@@ -1,0 +1,31 @@
+Predykaty: PRED(a, b, c)
+
+Termy:
+	Sta³e: liczby lub s³owa z wielkiej litery
+	Zmienne: ogólne obiekty zapisywane ma³ymi literami
+	Funkcje: Fun(x), przypisuj¹ pewnym obiektom inne obiekty
+	
+Podstawienie - przypisanie termu do zmiennej
+
+Unifikacja:
+	Unifikatorem pary formu³ P i Q nazywa siê para podstawieñ o i o' doprowadzaj¹ca P i Q do wspólnej postaci.
+	Najbardziej ogólny unifikator - unifikator przekszta³caj¹cy obie formu³y do postaci, w której jest ona prawdziwa
+	dla jak najszerszego zbioru obiektów, które mo¿na podstawiæ pod zmienne.  
+
+Rezolucja i zaprzeczenie:
+	Zastosowanie implikacji:
+		(K1 i A) i (-A' lub K2) => (K1[o] lub K2[o'])
+	gdzie K1 i K2 - klauzule, litera³y lub puste, A oraz A' s¹ unifikowalnymi atomami, dla których o i o'
+	stanowi¹ najbardziej ogólny unifikator.
+	
+	Algorytm:
+		1. Dodaj do bazy wiedzy -A.
+		2. SprowadŸ bazê wiedzy do postaci koniunkcji klauzul. (nie dotyczy)
+		3. Dodawaj do zbioru klauzul kolejene przy u¿yciu rezolucji, dopóki:
+			a) daje siê znaleŸæ pary istniej¹cych klauzul, które tworz¹ nowe klauzule
+			b) wœród klauzul nie ma dwóch takich, ¿e 
+				(i) pierwsza z nich jest atomem: C
+				(ii) druga jest zanegowanym atomem: -C'
+				(iii) atomy C i C' s¹ unifikowalne
+		4. Jeœli nastêpuje wyjœcie z pêtli na skutek niespe³nienia warunku 3a, to oznacza, ¿e dane s¹ niewystarczaj¹ce
+		do udowodnienia A. Jeœli wyjœcie nastêpuje na skutek nie spe³nienia warunku 3b, to A jest prawdziwe.
