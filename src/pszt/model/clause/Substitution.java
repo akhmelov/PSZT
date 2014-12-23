@@ -1,4 +1,4 @@
-package pszt_wnioskowanie;
+package pszt.model.clause;
 
 public class Substitution {
 
