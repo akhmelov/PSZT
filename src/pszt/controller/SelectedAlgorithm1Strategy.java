@@ -11,6 +11,7 @@ import pszt.view.View;
  * @author pk
  *
  */
+ 
 class SelectedAlgorithm1Strategy extends Strategy
 {
 	private Model model;
