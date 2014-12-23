@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PSZT>
+	<BaseKnowles>
+		<Clause>
+			 <Predicate name = "Predicate" negative = "true">
+			 	<Variable name = "Variable"></Variable>
+			 	<Constant name = "Constrant"></Constant>
+			 	<Function name = "Function">
+					<Variable name = "VariableInFirstFunction"></Variable>
+			 		<Constant name = "ConstrantInFirstFunction"></Constant>
+			 		<Function name = "FunctionInFirstFunction">
+						<Variable name = "VariableInSecondFunction"></Variable>
+				 		<Constant name = "ConstrantInSecondFunction"></Constant>			 		
+			 		</Function>			 		
+			 	</Function>
+			 </Predicate>
+			 <Predicate name = "Predicate2" negative = "true">
+			 	<Variable name = "VariablePredicate2"></Variable>
+			 	<Constant name = "ConstrantPredicate2"></Constant>
+			 	<Function name = "FunctionPredicate2">
+					<Variable name = "VariableInFirstFunction"></Variable>
+			 		<Constant name = "ConstrantInFirstFunction"></Constant>
+			 		<Function name = "FunctionInFirstFunction">
+						<Variable name = "VariableInSecondFunction"></Variable>
+				 		<Constant name = "ConstrantInSecondFunction"></Constant>			 		
+			 		</Function>			 		
+			 	</Function>
+			 </Predicate>
+		</Clause>
+		<Clause>
+			 <Predicate name = "PredicateSecond">
+			 	<Variable name = "Variable"></Variable>
+			 	<Constant name = "Constrant"></Constant>
+			 	<Function name = "Function">
+					<Variable name = "VariableInFirstFunction"></Variable>
+			 		<Constant name = "ConstrantInFirstFunction"></Constant>
+			 		<Function name = "FunctionInFirstFunction">
+						<Variable name = "VariableInSecondFunction"></Variable>
+				 		<Constant name = "ConstrantInSecondFunction"></Constant>			 		
+			 		</Function>			 		
+			 	</Function>
+			 </Predicate>
+		</Clause>
+	</BaseKnowles>
+	<Theses name = "Theses">
+		<Clause>
+			 <Predicate name = "Predicate" negative = "true">
+			 	<Variable name = "Variable"></Variable>
+			 	<Constant name = "Constrant"></Constant>
+			 	<Function name = "Function">
+					<Variable name = "VariableInFirstFunction"></Variable>
+			 		<Constant name = "ConstrantInFirstFunction"></Constant>
+			 		<Function name = "FunctionInFirstFunction">
+						<Variable name = "VariableInSecondFunction"></Variable>
+				 		<Constant name = "ConstrantInSecondFunction"></Constant>			 		
+			 		</Function>			 		
+			 	</Function>
+			 </Predicate>
+			 <Predicate name = "Predicate2">
+			 	<Variable name = "Variable"></Variable>
+			 	<Constant name = "Constrant"></Constant>
+			 	<Function name = "Function">
+					<Variable name = "VariableInFirstFunction"></Variable>
+			 		<Constant name = "ConstrantInFirstFunction"></Constant>
+			 		<Function name = "FunctionInFirstFunction">
+						<Variable name = "VariableInSecondFunction"></Variable>
+				 		<Constant name = "ConstrantInSecondFunction"></Constant>			 		
+			 		</Function>			 		
+			 	</Function>
+			 </Predicate>
+		</Clause>	
+	</Theses>
+</PSZT>
