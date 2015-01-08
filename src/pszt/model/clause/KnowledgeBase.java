@@ -24,13 +24,28 @@ public class KnowledgeBase extends Data
 	}
 	
 	/**
-	 * Dodaje nowa klauzure do zbioru, do znioru tez ktore mamy jako znane, czyli podane w tresci zadania
+	 * Dodaje nowa klauzule do zbioru, do znioru tez ktore mamy jako znane, czyli podane w tresci zadania
 	 * 
-	 * @param clause klauzura do dodania
+	 * @param clause klauzula do dodania
 	 */
 	public void addNewClause(final Clause clause)
 	{
 		listClauses.add(clause);
+	}
+	
+	/**
+	 * Sprawdza, czy klauzula c juz wystepuje w bazie
+	 * @param c
+	 * @return
+	 */
+	public boolean occurs(Clause b)
+	{
+		for (Clause a : listClauses)
+		{
+			if (a.equals(b))
+				return true;
+		}
+		return false;
 	}
 
 	/* (non-Javadoc)

@@ -19,8 +19,8 @@
 		</Clause>
 		<Clause>
 			 <Predicate name = "TS" negative = "true">
-			 	<Variable name = "Abacki"></Variable>
-			 	<Variable name = "Babacki"></Variable>
+			 	<Constant name = "Abacki"></Constant>
+			 	<Constant name = "Babacki"></Constant>
 			 </Predicate>
 		</Clause>
 		<Clause>

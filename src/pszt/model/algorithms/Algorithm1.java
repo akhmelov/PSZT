@@ -3,8 +3,11 @@
  */
 package pszt.model.algorithms;
 
-import pszt.model.clause.Data;
+import java.util.ArrayList;
+
+import pszt.model.clause.Clause;
 import pszt.model.clause.KnowledgeBase;
+import pszt.model.clause.Substitution;
 
 /**
  * @author pk
@@ -13,6 +16,9 @@ import pszt.model.clause.KnowledgeBase;
 public class Algorithm1 extends Algorithm
 {
 
+	Substitution sub1, sub2;
+	
+	
 	/**
 	 * @param knowledgeBase
 	 */
@@ -26,11 +32,45 @@ public class Algorithm1 extends Algorithm
 	@Override
 	public KnowledgeBase run()
 	{
-		// TODO operacje ktore robi dany algorytm, f-cje inne obiekty ...
-		System.out.println("Uruchomiany niezaimplementawany 1-szy algorytm po implementacji tego obiektu"
-				+ " prosze wywalic ta linijke model->algorithms->algorithm1->run");
-		return knowledgeBase; 	//zwrazany jest wynik wykonania algorytmu czyli obiekt typu Data, to co 
+		
+		myrun();
+		
+		return knowledgeBase; 	//zwracany jest wynik wykonania algorytmu czyli obiekt typu Data, to co 
 		//jest obecnie to jest testowe
 	}
 
+	private boolean myrun()
+	{
+		Clause a, b;
+		
+		ArrayList<Clause> kbase = knowledgeBase.getListClauses();
+		ArrayList<Clause> clauses = null;
+		
+		int thesisIndex = kbase.size() - 1;
+		
+		//Wybierz 2 klauzule
+		for (int i = 0; i < kbase.size(); ++i)
+		{
+			for (int j = i+1; j < kbase.size(); ++j)
+			{
+				a = kbase.get(i);
+				b = kbase.get(j);
+				
+				clauses = a.resolution(b);
+				if (clauses == null)
+					return true;
+				
+				//sprawdz, czy juz istnieje taka klauzula
+				for (Clause omg : clauses)
+				{
+					if (!knowledgeBase.occurs(omg))
+						kbase.add(omg);
+				}
+			}
+		}
+		
+		
+		
+		return false;
+	}
 }

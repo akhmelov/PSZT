@@ -3,6 +3,7 @@
  */
 package pszt.view;
 
+import java.awt.BorderLayout;
 import java.awt.ScrollPane;
 
 import javax.swing.JPanel;
@@ -31,11 +32,12 @@ public class ShowClausesJPanel extends ScrollPane
 	 */
 	public ShowClausesJPanel(final KnowledgeBase knowledgeBase)
 	{ 
+		//this.setLayout(new BorderLayout());
 		JScrollPane jScrollPane = new JScrollPane();
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode("PSZT");
 			DefaultMutableTreeNode clauses = new DefaultMutableTreeNode("Clauses");
 			for (Clause clause : knowledgeBase.getListClauses())
-			{	//tworzymy drzewo klauzur
+			{	//tworzymy drzewo klauzul
 				clauses.add(new DefaultMutableTreeNode(clause.toString()));
 			}
 			DefaultMutableTreeNode theses = new DefaultMutableTreeNode(knowledgeBase.getThesis().toString());

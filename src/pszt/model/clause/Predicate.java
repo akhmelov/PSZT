@@ -64,10 +64,49 @@ public class Predicate
 	{
 		list.add(term);
 	}
+	
+	/**
+	 * Probuje unifikowaæ dwa predykaty.
+	 * @param p 
+	 * @param sub1
+	 * @param sub2
+	 * @return true jesli sa unifikowalne - wtedy w sub znajduja sie podstawienia.
+	 */
+	public boolean unifiable(Predicate p, Substitution sub1, Substitution sub2)
+	{
+		for (int i = 0; i < list.size(); ++i)
+		{
+			Term a = list.get(i);
+			Term b = p.list.get(i);
+			if (!a.unify(b, sub1, sub2) && !b.unify(a, sub2, sub1))
+			{
+				sub1.clear();
+				sub2.clear();
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	
+	public Predicate applySubstitution(Substitution sub)
+	{
+		Predicate ret = new Predicate();
+		ret.setName(name);
+		ret.setNegative(isNegative);
+		for (Term t : list)
+		{
+			ret.addNewTerm(t.substitute(sub));
+		}
+		return ret;
+	}
+	
+	
+	
 	/**
 	 * 
 	 * @param b
-	 * @return true jeï¿½li taka sama nazwa.
+	 * @return true jesli taka sama nazwa.
 	 */
 	public boolean equals(Predicate b)
 	{
@@ -79,7 +118,7 @@ public class Predicate
 	/**
 	 * 
 	 * @param b
-	 * @return true jeï¿½li taka sama nazwa i taki sam znak przed predykatem.
+	 * @return true jesli taka sama nazwa i taki sam znak przed predykatem.
 	 */
 	public boolean preciseEquals(Predicate b)
 	{
@@ -89,6 +128,25 @@ public class Predicate
 				return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * 
+	 * @param b
+	 * @return true jesli taka sama nazwa, znak i termy
+	 */
+	public boolean termEquals(Predicate b)
+	{
+		if (!name.equals(b.name) || isNegative != b.isNegative)
+			return false;
+		for (int i = 0; i < list.size(); ++i)
+		{
+			Term x = list.get(i);
+			Term y = b.list.get(i);
+			if (!x.equals(y))
+				return false;
+		}
+		return true;
 	}
 
 	/**

@@ -3,6 +3,8 @@
  */
 package pszt.view;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JPanel;
 
 import pszt.model.clause.Data;
@@ -26,6 +28,7 @@ class ShowResultJPanel extends JPanel
 	}
 	public ShowResultJPanel(final KnowledgeBase knowledgeBase)
 	{
-		this.add(new ShowClausesJPanel(knowledgeBase));
+		this.setLayout(new BorderLayout());
+		this.add(new ShowClausesJPanel(knowledgeBase), BorderLayout.CENTER);
 	}
 }

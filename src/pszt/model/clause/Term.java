@@ -1,8 +1,8 @@
 package pszt.model.clause;
 
 /**
- * Term - sta�a, zmienna, funkcja.
- * type == 1 sta�a
+ * Term - stala, zmienna, funkcja.
+ * type == 1 stala
  * type == 2 zmienna
  * type == 3 funkcja
  */
@@ -18,6 +18,7 @@ public abstract class Term
 	 * Czy dany term jest zanegowany
 	 */
 	private boolean isNegative;
+	protected int type;
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 * Zwraca zawartosc obiektu w postaci stringu
@@ -25,68 +26,37 @@ public abstract class Term
 	 */
 	public Term()
 	{
+		type = 0;
 		isNegative = false;
 	}
 	public abstract String toString();
-	/**
-	 * Unifikacja pary term�w.
-	 * 
-	 * @param b
-	 * @return true je�li unifikacja si� powiod�a
-	 */
-	public abstract boolean unify(Term b);
-	{/*
-		if (type == 2)
-		{
-			//podstaw zmienne
-		}
-		if (b.type == 2)
-		{
-			//b.podstaw zmienne
-		}
-		
-		if (type == 2 && b.type == 2)
-		{
-			if (this.equals(b))
-			{
-				return true;
-			}
-		}
-		
-		//Je�eli termy s� takimi samymi funkcjami, to unifikuj ich argumenty
-		if (type == 3 && b.type == 3)
-		{
-			if (this.equals(b))
-			{
-				
-			}
-			else
-				return false;
-		}
-		else if (type != 2)
-		{
-			b.unify(this);
-		}
-		else if (this.occursCheck(symbol, b))
-			return false;
-		else
-		{
-			//unifikuj i dodaj do par� do zbioru podstawie�
-		}
-		
-		return false;*/
-	}
 	
 	/**
-	 * Sprawdza, czy zmienna x wyst�puje w t
-	 * 
-	 * @return
+	 * Porownanie dwoch termow.
+	 * @param b
+	 * @return true jesli takie same typy i nazwy.
 	 */
-	private boolean occursCheck(String x, Term t)
+	public boolean equals(Term b)
 	{
-		//for each variable y in t check if it equals x
-		return false;
+		if (type != b.type || !name.equals(b.name))
+			return false;
+		return true;
 	}
+	/**
+	 * Unifikacja pary termow.
+	 * 
+	 * @param b term, z ktorym ten term jest unifikowany 
+	 * @param sub1 podstawienia dla tego termu
+	 * @param sub2 podtawienia dla termu b
+	 * @return true jesli unifikacja sie powiodla
+	 */
+	public abstract boolean unify(Term b, Substitution sub1, Substitution sub2);
+	/**
+	 * Stosuje podstawienie dla tego termu.
+	 * @param sub odpowiedni zbior podstawien
+	 * @return term, ktory zastepuje ten term. jesli nie ma podstawienia, to zwraca ten term.
+	 */
+	public abstract Term substitute(Substitution sub);
 	/**
 	 * @return the name
 	 */

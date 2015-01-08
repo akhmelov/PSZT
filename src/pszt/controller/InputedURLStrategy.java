@@ -36,7 +36,7 @@ class InputedURLStrategy extends Strategy
 	@Override
 	public void perform(MyEvent event)
 	{
-		view.setWaitingPerformingWindow("Przekazywanie do modelu");
+		//view.setWaitingPerformingWindow("Przekazywanie do modelu");
 		// TODO Auto-generated method stub
 	}
 

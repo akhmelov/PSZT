@@ -3,17 +3,17 @@ package pszt.model.clause;
 import java.util.ArrayList;
 
 /**
- * Klauzula - alternatywa literaï¿½ï¿½w.
- * Literaï¿½y posortowane rosnï¿½co wedï¿½ug text;
+ * Klauzula - alternatywa literalow.
+ * Literaï¿½y posortowane rosnaco wedlug text;
  */
 public class Clause {
 
 	/**
-	 * Czy klauzura jest zanegowana
+	 * Czy klauzula jest zanegowana
 	 */
 	private boolean isNegative;
 	/**
-	 * Lista predykatow zawartych w tej klauzurze
+	 * Lista predykatow zawartych w tej klauzuli
 	 */
 	private ArrayList<Predicate> list;
 	
@@ -42,16 +42,79 @@ public class Clause {
 			tmp += ")";
 		return tmp;
 	}
-	/*
-	 * Porï¿½wnuje dwie klauzule - jeï¿½li predykaty w obu sï¿½ takie same to true.
+	/**
+	 * TODO przydaloby sie cos lepszego
+	 * @param b
+	 * @return true jesli tyle samo predykatow, takie same predykaty, takie same termy w predykatach
 	 */
 	public boolean equals(Clause b)
 	{
-		for (Predicate a : list)
+		if (list.size() != b.list.size())
+			return false;
+		for (int i = 0; i < list.size(); ++i)
 		{
-			int index = list.indexOf(a);
+			Predicate x = list.get(i);
+			Predicate y = b.list.get(i);
+			if (!x.termEquals(y))
+				return false;
 		}
-		return false;
+		return true;
+	}
+	
+	/**
+	 * Tworzy nowe klauzule przez rezolucje i zaprzeczenie z klauzula b.
+	 * @param c klauzula
+	 * @return null jezeli dwie klauzule koncza dowod. Lista nowych klauzul, ktore udalo sie stworzyc. Jesli sie nie udalo, 
+	 * to jest pusta.
+	 */
+	public ArrayList<Clause> resolution(Clause c)
+	{
+		//lista klauzul do zwrocenia
+		ArrayList<Clause> retList = new ArrayList<Clause>();
+		//podstawienia termow
+		//sub1 dla predykatu a
+		Substitution sub1 = new Substitution();
+		//sub2 dla predykatu b
+		Substitution sub2 = new Substitution();
+		
+		for (int i = 0; i < list.size(); ++i)
+		{
+			Predicate a = list.get(i);
+			for (int j = 0; j < c.list.size(); ++j)
+			{
+				Predicate b = c.list.get(j);
+				
+				//Sprawdz, czy mozna zastosowac rezolucje dla predykatow a i b.
+				//Je¿eli tak, to stworz nowa klauzule i dodaj ja do listy.
+				//Je¿eli nie, to szukaj dalej.
+				if (a.equals(b) && !a.preciseEquals(b) && a.unifiable(b, sub1, sub2))
+				{
+					//Jezeli klauzule skladaja sie z jednego elementu (tego samego predykatu) i sa
+					//unifikowalne to konczy to dowod.
+					if (list.size() == 1 && c.list.size() == 1)
+						return null;
+					Clause n = new Clause();
+					//Dodaj predykaty z tej klauzuli
+					for (int k = 0; k < list.size(); ++k)
+					{
+						Predicate p = list.get(k);
+						//Nie dodawaj predykatu a.
+						if (k != i)
+							n.addPredicate(p.applySubstitution(sub1));
+					}
+					//Dodaj predykaty z klauzuli c
+					for (int k = 0; k < c.list.size(); ++k)
+					{
+						Predicate p = c.list.get(k);
+						//Nie dodawaj predykatu b.
+						if (k != j)
+							n.addPredicate(p.applySubstitution(sub2));
+					}
+					retList.add(n);
+				}
+			}
+		}
+		return retList; 
 	}
 	
 	/**
