@@ -80,7 +80,8 @@ public class Clause {
 	/**
 	 * Tworzy nowe klauzule przez rezolucje i zaprzeczenie z klauzula b.
 	 * @param c klauzula
-	 * @return null jezeli dwie klauzule koncza dowod. Lista nowych klauzul, ktore udalo sie stworzyc. Jesli sie nie udalo, 
+	 * @return Lista zawierajaca pusta klauzule, jezeli dwie klauzule koncza dowod. 
+	 * Lista nowych klauzul, ktore udalo sie stworzyc. Jesli sie nie udalo, 
 	 * to jest pusta.
 	 */
 	public ArrayList<Clause> resolution(Clause c)
@@ -132,6 +133,8 @@ public class Clause {
 							n.addPredicate(p.applySubstitution(sub2));
 					}
 					retList.add(n);
+					sub1.clear();
+					sub2.clear();
 				}
 			}
 		}

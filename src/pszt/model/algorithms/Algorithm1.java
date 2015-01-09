@@ -39,6 +39,11 @@ public class Algorithm1 extends Algorithm
 		//jest obecnie to jest testowe
 	}
 
+	
+	/**
+	 * Strategia wszerz.
+	 * @return
+	 */
 	private boolean myrun()
 	{
 		Clause a, b;

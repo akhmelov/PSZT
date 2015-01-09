@@ -3,7 +3,10 @@
  */
 package pszt.model.algorithms;
 
-import pszt.model.clause.Data;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import pszt.model.clause.Clause;
 import pszt.model.clause.KnowledgeBase;
 
 /**
@@ -29,11 +32,57 @@ public class Algorithm3 extends Algorithm
 	@Override
 	public KnowledgeBase run()
 	{
-		// TODO operacje ktore robi dany algorytm, f-cje inne obiekty ...
-		System.out.println("Uruchomiany niezaimplementawany 3-ci algorytm po implementacji tego obiektu"
-				+ " prosze wywalic ta linijke model->algorithms->algorithm3->run");
+		myrun();
+		
 		return knowledgeBase; 	//zwrazany jest wynik wykonania algorytmu czyli obiekt typu Data, to co 
 		//jest obecnie to jest testowe
 	}
 
+	private boolean myrun()
+	{
+Clause a, b;
+		
+		ArrayList<Clause> kbase = knowledgeBase.getListClauses();
+		ArrayList<Clause> clauses = null;
+		
+		int thesisIndex = kbase.size() - 1;
+		int baseEnd = thesisIndex + 1;
+		boolean next = false;
+		
+		
+		int aindex = 0;
+		int bindex = 0;
+		
+		Scanner keyboard = new Scanner(System.in);
+		
+		
+		
+		while (true)
+		{
+			aindex = keyboard.nextInt();
+			bindex = keyboard.nextInt();
+			
+			a = kbase.get(aindex);
+			b = kbase.get(bindex);
+			
+			clauses = a.resolution(b);
+			
+			//sprawdz, czy juz istnieje taka klauzula
+			for (Clause omg : clauses)
+			{
+				if(omg.isEmpty())
+				{
+					kbase.add(omg);
+					return true;
+				}
+				if (!knowledgeBase.occurs(omg))
+				{
+					kbase.add(omg);
+				}
+			}
+		}
+		
+		
+		//return false;
+	}
 }
