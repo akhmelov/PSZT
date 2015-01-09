@@ -38,51 +38,75 @@ public class Algorithm3 extends Algorithm
 		//jest obecnie to jest testowe
 	}
 
+	/**
+	 * Strategia przeszukiwania wszerz z preferencja dla krotkich klauzul.
+	 * @return
+	 */
 	private boolean myrun()
 	{
-Clause a, b;
+		Clause a, b;
 		
 		ArrayList<Clause> kbase = knowledgeBase.getListClauses();
 		ArrayList<Clause> clauses = null;
 		
 		int thesisIndex = kbase.size() - 1;
 		int baseEnd = thesisIndex + 1;
-		boolean next = false;
+		boolean clauseCreated = false;
+		//maksymalna dlugosc klauzuli, ktora mozemy stworzyc w danej iteracji.
+		//jezeli z danego zbioru klauzul nie mozemy utworzyc juz zadnej nowej
+		//klauzuli o dlugosci mniejszej niz ta, to zwiekszamy te wartosc.
+		int clauseLength = 2;
 		
-		
-		int aindex = 0;
-		int bindex = 0;
-		
-		Scanner keyboard = new Scanner(System.in);
-		
-		
-		
-		while (true)
+		//Wybierz 2 klauzule
+		for (int i = 0; i < baseEnd; ++i)
 		{
-			aindex = keyboard.nextInt();
-			bindex = keyboard.nextInt();
-			
-			a = kbase.get(aindex);
-			b = kbase.get(bindex);
-			
-			clauses = a.resolution(b);
-			
-			//sprawdz, czy juz istnieje taka klauzula
-			for (Clause omg : clauses)
+			for (int j = i+1; j < baseEnd; ++j)
 			{
-				if(omg.isEmpty())
-				{
-					kbase.add(omg);
+				a = kbase.get(i);
+				b = kbase.get(j);
+				
+				clauses = a.resolution(b);
+				if (clauses == null)
 					return true;
-				}
-				if (!knowledgeBase.occurs(omg))
+				
+				//Sprawdz, czy juz istnieje taka klauzula
+				for (Clause omg : clauses)
 				{
-					kbase.add(omg);
+					if(omg.isEmpty())
+					{
+						kbase.add(omg);
+						return true;
+					}
+					//Do bazy dodajemy tylko klauzule ponizej ustalonej dlugosci.
+					if (omg.length() < clauseLength && !knowledgeBase.occurs(omg))
+					{
+						kbase.add(omg);
+						clauseCreated = true;
+					}
 				}
 			}
+			//Jezeli powstala nowa klauzula a zakonczylismy obecna iteracje, to zaczynamy
+			//kolejna, tym razem z rozszerzonym zakresem.
+			if (clauseCreated && i+1 == baseEnd)
+			{
+				i = -1;
+				baseEnd = kbase.size();
+				clauseCreated = false;
+			}
+			//Jezeli nie powstala zadna nowa klauzula, to zwiekszamy limit dlugosci klauzul
+			//i zaczynamy kolejna iteracje.
+			else if (!clauseCreated && i+1 == baseEnd)
+			{
+				++clauseLength;
+				i = -1;
+				baseEnd = kbase.size();
+			}
+			//Jezeli nie udalo sie dowiesc tezy przy uzyciu klauzul o maksymalnej dlugosci
+			//5, to zakoncz i zglos niepowodzenie.
+			if (clauseLength > 5)
+				return false;
 		}
 		
-		
-		//return false;
+		return false;
 	}
 }

@@ -39,6 +39,14 @@ public class Clause {
 	{
 		return list.isEmpty();
 	}
+	/**
+	 * 
+	 * @return liczba predykatow w klauzuli
+	 */
+	public int length()
+	{
+		return list.size();
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
