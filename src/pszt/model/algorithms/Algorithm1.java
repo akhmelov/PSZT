@@ -65,6 +65,11 @@ public class Algorithm1 extends Algorithm
 				//sprawdz, czy juz istnieje taka klauzula
 				for (Clause omg : clauses)
 				{
+					if(omg.isEmpty())
+					{
+						kbase.add(omg);
+						return true;
+					}
 					if (!knowledgeBase.occurs(omg))
 					{
 						kbase.add(omg);

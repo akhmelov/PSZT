@@ -38,18 +38,20 @@ public class Controller	extends Thread
 	@Override
 	public void run()
 	{	//uruchamiamy watek i czekamy na strategie
-		try
+		try 
 		{
 			while(true)	//czekamy na strategie
 			{
-				MyEvent event = blockingQueue.take();	//pobieramy zdarzenie
+				MyEvent event;
+				event = blockingQueue.take();
 				strategyMap.get(event.getClass()).perform(event);	//wykanujemy odpowiadajaca strategie
 			}
-		}
-		catch(Exception e)
+		} 
+		catch (InterruptedException e) 
 		{
-			System.out.print("Zgloszony wyjatek nie ma strategii do eventa w controller.run: " + e);
-		}
+			e.printStackTrace();
+		}	//pobieramy zdarzenie
+
 		super.run();
 	}
 }

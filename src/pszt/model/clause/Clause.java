@@ -17,13 +17,28 @@ public class Clause {
 	 */
 	private ArrayList<Predicate> list;
 	
+	/**
+	 * Jedna z klauzul z ktorych nastopilo powstanie tej
+	 */
+	private Clause leftNodeTree;
+	/**
+	 * Jedna z klauzul z ktorych nastopilo powstanie tej
+	 */
+	private Clause rightNodeTree;
+	
 	public Clause()
 	{
 		list = new ArrayList<Predicate>();
 		isNegative = false;
 	}
 	
-	
+	/**
+	 * @return czy jest pusty ten obiekt
+	 */
+	public boolean isEmpty()
+	{
+		return list.isEmpty();
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -37,7 +52,8 @@ public class Clause {
 			tmp += predicate.toString();
 			tmp += " V ";
 		}
-		tmp = tmp.substring(0, tmp.length() - 3);	//usuwamy ostatnie " V " 
+		if(tmp.length() > 3)
+			tmp = tmp.substring(0, tmp.length() - 3);	//usuwamy ostatnie " V " 
 		if(isNegative)
 			tmp += ")";
 		return tmp;
@@ -85,15 +101,20 @@ public class Clause {
 				Predicate b = c.list.get(j);
 				
 				//Sprawdz, czy mozna zastosowac rezolucje dla predykatow a i b.
-				//Je¿eli tak, to stworz nowa klauzule i dodaj ja do listy.
-				//Je¿eli nie, to szukaj dalej.
+				//Jeï¿½eli tak, to stworz nowa klauzule i dodaj ja do listy.
+				//Jeï¿½eli nie, to szukaj dalej.
 				if (a.equals(b) && !a.preciseEquals(b) && a.unifiable(b, sub1, sub2))
 				{
+					Clause n = new Clause();
+					n.leftNodeTree = this;
+					n.rightNodeTree = c; //pamietamy klazule z ktory wyprowadzamy obecna
 					//Jezeli klauzule skladaja sie z jednego elementu (tego samego predykatu) i sa
 					//unifikowalne to konczy to dowod.
 					if (list.size() == 1 && c.list.size() == 1)
-						return null;
-					Clause n = new Clause();
+					{
+						retList.add(n);
+						return retList;
+					}
 					//Dodaj predykaty z tej klauzuli
 					for (int k = 0; k < list.size(); ++k)
 					{
@@ -157,5 +178,25 @@ public class Clause {
 	public final void setNegative(boolean isNegative)
 	{
 		this.isNegative = isNegative;
+	}
+
+
+	public Clause getLeftNodeTree() {
+		return leftNodeTree;
+	}
+
+
+	public void setLeftNodeTree(Clause leftNodeTree) {
+		this.leftNodeTree = leftNodeTree;
+	}
+
+
+	public Clause getRightNodeTree() {
+		return rightNodeTree;
+	}
+
+
+	public void setRightNodeTree(Clause rightNodeTree) {
+		this.rightNodeTree = rightNodeTree;
 	}
 }

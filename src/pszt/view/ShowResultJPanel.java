@@ -29,6 +29,6 @@ class ShowResultJPanel extends JPanel
 	public ShowResultJPanel(final KnowledgeBase knowledgeBase)
 	{
 		this.setLayout(new BorderLayout());
-		this.add(new ShowClausesJPanel(knowledgeBase), BorderLayout.CENTER);
+		this.add(new ShowResultClausesJPanel(knowledgeBase), BorderLayout.CENTER);
 	}
 }

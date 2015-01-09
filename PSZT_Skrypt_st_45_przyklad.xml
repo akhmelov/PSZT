@@ -3,18 +3,18 @@
 	<BaseKnowles>
 		<Clause>
 			 <Predicate name = "TS">
-			 	<Variable name = "x"></Variable>
-			 	<Variable name = "x"></Variable>
+			 	<Variable name = "x0"></Variable>
+			 	<Variable name = "x0"></Variable>
 			 </Predicate>
 		</Clause>
 		<Clause>
 			 <Predicate name = "TS" negative = "true">
-			 	<Variable name = "x"></Variable>
-			 	<Variable name = "y"></Variable>
+			 	<Variable name = "x1"></Variable>
+			 	<Variable name = "x2"></Variable>
 			 </Predicate>
 			 <Predicate name = "TS">
-			 	<Variable name = "y"></Variable>
-			 	<Variable name = "x"></Variable>
+			 	<Variable name = "x2"></Variable>
+			 	<Variable name = "x1"></Variable>
 			 </Predicate>
 		</Clause>
 		<Clause>
@@ -25,164 +25,170 @@
 		</Clause>
 		<Clause>
 			 <Predicate name = "TS" negative = "true">
-			 	<Variable name = "Abacki"></Variable>
-			 	<Variable name = "Cabacki"></Variable>
+			 	<Constant name = "Abacki"></Constant>
+			 	<Constant name = "Cabacki"></Constant>
 			 </Predicate>
 		</Clause>
 		<Clause>
 			 <Predicate name = "TS" negative = "true">
-			 	<Variable name = "Babacki"></Variable>
-			 	<Variable name = "Cabacki"></Variable>
+			 	<Constant name = "Babacki"></Constant>
+			 	<Constant name = "Cabacki"></Constant>
 			 </Predicate>
 		</Clause>
 		<Clause>
 			 <Predicate name = "TS" negative = "true">
-			 	<Variable name = "Architekt"></Variable>
-			 	<Variable name = "Inf"></Variable>
+			 	<Constant name = "Architekt"></Constant>
+			 	<Constant name = "Inf"></Constant>
 			 </Predicate>
 		</Clause>
 		<Clause>
 			 <Predicate name = "TS" negative = "true">
-			 	<Variable name = "Architekt"></Variable>
-			 	<Variable name = "Lekarz"></Variable>
+			 	<Constant name = "Architekt"></Constant>
+			 	<Constant name = "Lekarz"></Constant>
 			 </Predicate>
 		</Clause>
 		<Clause>
 			 <Predicate name = "TS" negative = "true">
-			 	<Variable name = "Inf"></Variable>
-			 	<Variable name = "Lekarz"></Variable>
+			 	<Constant name = "Inf"></Constant>
+			 	<Constant name = "Lekarz"></Constant>
 			 </Predicate>
 		</Clause>
 		<Clause>
 			 <Predicate name = "TS" negative = "true">
-			 	<Variable name = "Muzyka"></Variable>
-			 	<Variable name = "Szachy"></Variable>
+			 	<Constant name = "Muzyka"></Constant>
+			 	<Constant name = "Szachy"></Constant>
 			 </Predicate>
 		</Clause>
 		<Clause>
 			 <Predicate name = "TS" negative = "true">
-			 	<Variable name = "Muzyka"></Variable>
-			 	<Variable name = "Wedka"></Variable>
+			 	<Constant name = "Muzyka"></Constant>
+			 	<Constant name = "Wedka"></Constant>
 			 </Predicate>
 		</Clause>
 		<Clause>
 			 <Predicate name = "TS" negative = "true">
-			 	<Variable name = "Szachy"></Variable>
-			 	<Variable name = "Wedka"></Variable>
+			 	<Constant name = "Szachy"></Constant>
+			 	<Constant name = "Wedka"></Constant>
 			 </Predicate>
 		</Clause>
 		<Clause>
 			 <Predicate name = "ZAWOD">
-			 	<Variable name = "x"></Variable>
-			 	<Variable name = "Architekt"></Variable>
+			 	<Variable name = "x3"></Variable>
+			 	<Constant name = "Architekt"></Constant>
 			 </Predicate>
 			 <Predicate name = "ZAWOD">
-			 	<Variable name = "x"></Variable>
-			 	<Variable name = "Inf"></Variable>
+			 	<Variable name = "x3"></Variable>
+			 	<Constant name = "Inf"></Constant>
 			 </Predicate>
 			 <Predicate name = "ZAWOD">
-			 	<Variable name = "x"></Variable>
-			 	<Variable name = "Lekarz"></Variable>
+			 	<Variable name = "x3"></Variable>
+			 	<Constant name = "Lekarz"></Constant>
 			 </Predicate>
 		</Clause>
 		<Clause>
 			 <Predicate name = "ZAWOD" negative = "true">
-			 	<Variable name = "x"></Variable>
-			 	<Variable name = "z"></Variable>
+			 	<Variable name = "x4"></Variable>
+			 	<Variable name = "x6"></Variable>
 			 </Predicate>
 			 <Predicate name = "ZAWOD" negative = "true">
-			 	<Variable name = "y"></Variable>
-			 	<Variable name = "z"></Variable>
+			 	<Variable name = "x5"></Variable>
+			 	<Variable name = "x6"></Variable>
 			 </Predicate>
 			 <Predicate name = "TS">
-			 	<Variable name = "x"></Variable>
-			 	<Variable name = "y"></Variable>
+			 	<Variable name = "x4"></Variable>
+			 	<Variable name = "x5"></Variable>
 			 </Predicate>
 		</Clause>
 		<Clause>
 			 <Predicate name = "ZAWOD" negative = "true">
-			 	<Variable name = "x"></Variable>
-			 	<Variable name = "y"></Variable>
+			 	<Variable name = "x7"></Variable>
+			 	<Variable name = "x8"></Variable>
 			 </Predicate>
 			 <Predicate name = "ZAWOD" negative = "true">
-			 	<Variable name = "x"></Variable>
-			 	<Variable name = "z"></Variable>
+			 	<Variable name = "x7"></Variable>
+			 	<Variable name = "x9"></Variable>
 			 </Predicate>
 			 <Predicate name = "TS">
-			 	<Variable name = "y"></Variable>
-			 	<Variable name = "z"></Variable>
+			 	<Variable name = "x8"></Variable>
+			 	<Variable name = "x9"></Variable>
 			 </Predicate>
 		</Clause>
 		<Clause>
 			 <Predicate name = "HOBBY">
-			 	<Variable name = "x"></Variable>
-			 	<Variable name = "Muzyka"></Variable>
+			 	<Variable name = "x10"></Variable>
+			 	<Constant name = "Muzyka"></Constant>
 			 </Predicate>
 			 <Predicate name = "HOBBY">
-			 	<Variable name = "x"></Variable>
-			 	<Variable name = "Szachy"></Variable>
+			 	<Variable name = "x10"></Variable>
+			 	<Constant name = "Szachy"></Constant>
 			 </Predicate>
 			 <Predicate name = "ZAWOD">
-			 	<Variable name = "x"></Variable>
-			 	<Variable name = "Wedka"></Variable>
+			 	<Variable name = "x10"></Variable>
+			 	<Constant name = "Wedka"></Constant>
 			 </Predicate>
 		</Clause>
 		<Clause>
 			 <Predicate name = "HOBBY" negative = "true">
-			 	<Variable name = "x"></Variable>
-			 	<Variable name = "z"></Variable>
+			 	<Variable name = "x11"></Variable>
+			 	<Variable name = "x13"></Variable>
 			 </Predicate>
 			 <Predicate name = "HOBBY" negative = "true">
-			 	<Variable name = "y"></Variable>
-			 	<Variable name = "z"></Variable>
+			 	<Variable name = "x12"></Variable>
+			 	<Variable name = "x13"></Variable>
 			 </Predicate>
 			 <Predicate name = "TS">
-			 	<Variable name = "x"></Variable>
-			 	<Variable name = "y"></Variable>
+			 	<Variable name = "x11"></Variable>
+			 	<Variable name = "x12"></Variable>
 			 </Predicate>
 		</Clause>
 		<Clause>
 			 <Predicate name = "HOBBY" negative = "true">
-			 	<Variable name = "x"></Variable>
-			 	<Variable name = "y"></Variable>
+			 	<Variable name = "x14"></Variable>
+			 	<Variable name = "x15"></Variable>
 			 </Predicate>
 			 <Predicate name = "HOBBY" negative = "true">
-			 	<Variable name = "x"></Variable>
-			 	<Variable name = "z"></Variable>
+			 	<Variable name = "x14"></Variable>
+			 	<Variable name = "x16"></Variable>
 			 </Predicate>
 			 <Predicate name = "TS">
-			 	<Variable name = "y"></Variable>
-			 	<Variable name = "z"></Variable>
+			 	<Variable name = "x15"></Variable>
+			 	<Variable name = "x16"></Variable>
 			 </Predicate>
 		</Clause>
 		<Clause>
 			<Predicate name = "ZAWOD">
-				<Variable name = "Abacki"></Variable>
-				<Variable name = "Lekarz"></Variable>
+				<Constant name = "Abacki"></Constant>
+				<Constant name = "Lekarz"></Constant>
 			</Predicate>	
 		</Clause>
 		<Clause>
 			<Predicate name = "ZAWOD" negative = "true">
-				<Variable name = "x"></Variable>
-				<Variable name = "Architekt"></Variable>
+				<Variable name = "x17"></Variable>
+				<Constant name = "Architekt"></Constant>
 			</Predicate>
 			<Predicate name = "HOBBY">
-				<Variable name = "x"></Variable>
-				<Variable name = "Szachy"></Variable>
+				<Variable name = "x17"></Variable>
+				<Constant name = "Szachy"></Constant>
 			</Predicate>		
 		</Clause>
 		<Clause>
 			<Predicate name = "HOBBY">
-				<Variable name = "Cabacki"></Variable>
-				<Variable name = "Muzyka"></Variable>
+				<Constant name = "Cabacki"></Constant>
+				<Constant name = "Muzyka"></Constant>
 			</Predicate>
 		</Clause>
+    <Clause>
+			 <Predicate name = "ZAWOD" negative = "true">
+			 	<Constant name = "Cabacki"></Constant>
+			 	<Constant name = "Inf"></Constant>
+			 </Predicate>
+		</Clause>	
 	</BaseKnowles>
 	<Theses name = "Theses">
 		<Clause>
 			 <Predicate name = "ZAWOD" negative = "true">
-			 	<Variable name = "Cabacki"></Variable>
-			 	<Variable name = "Inf"></Variable>
+			 	<Constant name = "Cabacki"></Constant>
+			 	<Constant name = "Inf"></Constant>
 			 </Predicate>
 		</Clause>	
 	</Theses>
