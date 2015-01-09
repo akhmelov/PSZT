@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PSZT>
+	<BaseKnowles>
+		<Clause>
+			 <Predicate name = "C" negative = "true">
+			 	<Variable name = "x"></Variable>
+			 </Predicate>
+			 <Predicate name = "W">
+			 	<Variable name = "x"></Variable>
+			 </Predicate>
+		</Clause>
+		<Clause>
+			 <Predicate name = "C" negative = "true">
+			 	<Variable name = "x"></Variable>
+			 </Predicate>
+			 <Predicate name = "R">
+			 	<Variable name = "x"></Variable>
+			 </Predicate>
+		</Clause>
+		<Clause>
+			 <Predicate name = "C">
+			 	<Constant name = "A"></Constant>
+			 </Predicate>
+		</Clause>
+		<Clause>
+			 <Predicate name = "O">
+			 	<Constant name = "A"></Constant>
+			 </Predicate>
+		</Clause>
+    <Clause>
+			 <Predicate name = "O" negative = "true">
+			 	<Variable name = "x"></Variable>
+			 </Predicate>
+			 <Predicate name = "R" negative = "true">
+			 	<Variable name = "x"></Variable>
+			 </Predicate>
+		</Clause>	
+	</BaseKnowles>
+	<Theses name = "Theses">
+		<Clause>
+			 <Predicate name = "O" negative = "true">
+			 	<Variable name = "x"></Variable>
+			 </Predicate>
+			 <Predicate name = "R" negative = "true">
+			 	<Variable name = "x"></Variable>
+			 </Predicate>
+		</Clause>	
+	</Theses>
+</PSZT>

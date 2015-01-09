@@ -47,11 +47,13 @@ public class Algorithm1 extends Algorithm
 		ArrayList<Clause> clauses = null;
 		
 		int thesisIndex = kbase.size() - 1;
+		int baseEnd = thesisIndex + 1;
+		boolean finished = true;
 		
 		//Wybierz 2 klauzule
-		for (int i = 0; i < kbase.size(); ++i)
+		for (int i = 0; i < baseEnd; ++i)
 		{
-			for (int j = i+1; j < kbase.size(); ++j)
+			for (int j = i+1; j < baseEnd; ++j)
 			{
 				a = kbase.get(i);
 				b = kbase.get(j);
@@ -64,8 +66,17 @@ public class Algorithm1 extends Algorithm
 				for (Clause omg : clauses)
 				{
 					if (!knowledgeBase.occurs(omg))
+					{
 						kbase.add(omg);
+						finished = false;
+					}
 				}
+			}
+			if (i+1 == baseEnd && !finished)
+			{
+				i = -1;
+				baseEnd = kbase.size();
+				finished = true;
 			}
 		}
 		
@@ -73,4 +84,11 @@ public class Algorithm1 extends Algorithm
 		
 		return false;
 	}
+	
+	
+	private void test()
+	{
+		
+	}
+	
 }
